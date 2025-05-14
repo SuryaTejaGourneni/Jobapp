@@ -1,5 +1,7 @@
 package com.example.jobapp.models;
 
+import java.util.List;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.NamedQuery;
@@ -8,12 +10,27 @@ import jakarta.persistence.NamedQuery;
 @NamedQuery(name = "User.findByUsername", query = "SELECT u FROM User u WHERE u.username = :username")
 public class User {
     @Id
+    @jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)
     private Long id;
     private String username;
     private String role;
     private String password;
 
-    
+    public User() {
+    }
+    @jakarta.persistence.OneToMany(mappedBy = "username") 
+    private List<Application> applications;
+    public List<Application> getApplications() {
+        return applications;
+    }
+    public void setApplications(List<Application> applications) {
+        this.applications = applications;
+    }
+    public User(String username, String password, String role) {
+        this.username = username;
+        this.password = password;
+        this.role = role;
+    }
     public Long getId() {
         return id;
     }
@@ -44,5 +61,9 @@ public class User {
     
     public void setRole(String role) {
         this.role = role;
+    }
+    public void setEmail(String string) {
+        
+        throw new UnsupportedOperationException("Unimplemented method 'setEmail'");
     }
 }

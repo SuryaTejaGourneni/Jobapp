@@ -4,6 +4,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 
 
 @Entity
@@ -13,16 +15,27 @@ public class Application {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    @SuppressWarnings("unused")
+    private User user;
     private String name;
     private String email;
-    private Long jobId;
+
+    @ManyToOne
+    @JoinColumn(name = "job_id")
+    @SuppressWarnings("unused")
+    private Job job;
+    @SuppressWarnings("unused")
+    private String status;
+    private Job jobId;
     private String resume;
     private String coverLetter;
     
     public Application() {
     }
 
-    public Application(Long id, String name, String email, Long jobId, String resume, String coverLetter) {
+    public Application(Long id, String name, String email, Job jobId, String resume, String coverLetter) {
         this.id = id;
         this.name = name;
         this.email = email;
@@ -55,12 +68,12 @@ public class Application {
         this.email = email;
     }
 
-    public Long getJobId() {
+    public Job getJobId() {
         return jobId;
     }
 
-    public void setJobId(Long jobId) {
-        this.jobId = jobId;
+    public void setJobId(Job job1) {
+        this.jobId = job1;
     }
 
     public String getResume() {
@@ -77,5 +90,15 @@ public class Application {
 
     public void setCoverLetter(String coverLetter) {
         this.coverLetter = coverLetter;
+    }
+
+    public void setUser(User user1) {
+        
+        throw new UnsupportedOperationException("Unimplemented method 'setUser'");
+    }
+
+    public void setStatus(String string) {
+        
+        throw new UnsupportedOperationException("Unimplemented method 'setStatus'");
     }
 }

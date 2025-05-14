@@ -1,14 +1,20 @@
 package com.example.jobapp.models;
 
+import java.util.List;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "jobs") 
 public class Job {
+
+    public Job(String software_Engineer, String develop_software_applications, String tech_Company, String new_York, double par) {
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,6 +26,8 @@ public class Job {
     private String location;
     private Double salary;
 
+    @OneToMany(mappedBy = "job")
+    private List<Application> applications;
     
     public Long getId() {
         return id;
@@ -80,4 +88,12 @@ public String toString() {
             ", salary=" + salary +
             '}';
 }
+
+    public List<Application> getApplications() {
+        return applications;
+    }
+
+    public void setApplications(List<Application> applications) {
+        this.applications = applications;
+    }
 }
