@@ -2,6 +2,7 @@ package com.example.jobapp.models;
 
 import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.NamedQuery;
@@ -18,7 +19,7 @@ public class User {
 
     public User() {
     }
-    @jakarta.persistence.OneToMany(mappedBy = "username") 
+    @jakarta.persistence.OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true) 
     private List<Application> applications;
     public List<Application> getApplications() {
         return applications;

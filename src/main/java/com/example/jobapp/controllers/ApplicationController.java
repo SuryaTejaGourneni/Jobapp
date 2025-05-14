@@ -35,7 +35,7 @@ public class ApplicationController {
 
     @PostMapping
     public ResponseEntity<Application> createApplication(@RequestBody Application application) {
-        if (application == null || application.getName() == null || application.getEmail() == null || application.getJobId() == null) {
+        if (application == null || application.getName() == null || application.getEmail() == null || application.getJob() == null) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
         try {

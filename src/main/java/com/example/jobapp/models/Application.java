@@ -17,29 +17,25 @@ public class Application {
     
     @ManyToOne
     @JoinColumn(name = "user_id")
-    @SuppressWarnings("unused")
     private User user;
     private String name;
     private String email;
 
     @ManyToOne
     @JoinColumn(name = "job_id")
-    @SuppressWarnings("unused")
     private Job job;
-    @SuppressWarnings("unused")
     private String status;
-    private Job jobId;
     private String resume;
     private String coverLetter;
     
     public Application() {
     }
 
-    public Application(Long id, String name, String email, Job jobId, String resume, String coverLetter) {
+    public Application(Long id, String name, String email, String resume, String coverLetter, Job job) {
         this.id = id;
         this.name = name;
         this.email = email;
-        this.jobId = jobId;
+        this.job = job;
         this.resume = resume;
         this.coverLetter = coverLetter;
     }
@@ -68,12 +64,12 @@ public class Application {
         this.email = email;
     }
 
-    public Job getJobId() {
-        return jobId;
+    public Job getJob() {
+        return job;
     }
 
-    public void setJobId(Job job1) {
-        this.jobId = job1;
+    public void setJob(Job job1) {
+        this.job = job1;
     }
 
     public String getResume() {
@@ -93,12 +89,18 @@ public class Application {
     }
 
     public void setUser(User user1) {
-        
-        throw new UnsupportedOperationException("Unimplemented method 'setUser'");
+        this.user=user1;
+    }
+    
+    public void setStatus(String status) {      
+        this.status=status;
     }
 
-    public void setStatus(String string) {
-        
-        throw new UnsupportedOperationException("Unimplemented method 'setStatus'");
+    public String getStatus() {
+        return status;
+    }
+
+    public User getUser() {
+        return user;
     }
 }
