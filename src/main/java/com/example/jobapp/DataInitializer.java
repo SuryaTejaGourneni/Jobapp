@@ -19,29 +19,17 @@ public class DataInitializer {
     @Bean
     public CommandLineRunner initDatabase(UserRepository userRepository, JobRepository jobRepository, ApplicationRepository applicationRepository) {
         return (String[] args) -> {
-            User user1 = new User();
-            user1.setUsername("Surya");
-            user1.setEmail("suryatejagourneni@gmail.com");
-            user1.setRole("User");
+            User user1 = new User(List.of(), null, "Surya", "suryatejagourneni@gmail.com", "User");
             user1.setPassword("Surya@123");
-            user1.setApplications(List.of());
             
-            User user2 = new User();
-            user2.setUsername("Teja");
-            user2.setEmail("javasuryateja@gmail.com");
-            user2.setRole("User");
+            User user2 = new User(List.of(), null, "Teja", "javasuryateja@gmail.com", "User");
             user2.setPassword("Teja@123");
-            user2.setApplications(List.of());
             
-            User user3 = new User();
-            user3.setUsername("Admin");
-            user3.setEmail("suryatejagourneni00@gmail.com");
-            user3.setRole("Admin");
+            User user3 = new User(List.of(), null, "Admin", "suryatejagourneni00@gmail.com", "Admin");
             user3.setPassword("admin123");
-            user3.setApplications(List.of());
             
             
-            Job job1 = new Job(null, null, null, null, 0);
+            Job job1 = new Job();
             job1.setTitle("Java Developer");
             job1.setDescription("Backend Java job");
             job1.setCompany("Coserv");
@@ -49,7 +37,7 @@ public class DataInitializer {
             job1.setSalary(120000.00);
             job1.setApplications(List.of());
             
-            Job job2 = new Job(null, null, null, null, 0);
+            Job job2 = new Job();
             job2.setTitle("Frontend Developer");
             job2.setDescription("React Developer job");
             job2.setCompany("Sabre Corporation");
@@ -57,7 +45,7 @@ public class DataInitializer {
             job2.setSalary(120000.00);
             job2.setApplications(List.of());
             
-            Job job3 = new Job(null, null, null, null, 0);
+            Job job3 = new Job();
             job3.setTitle("Admin");
             job3.setDescription("Admin job");
             job3.setCompany("Amensys Inc");

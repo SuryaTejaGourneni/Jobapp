@@ -14,6 +14,7 @@ com/example/jobapp/repo/UserRepository.class
 com/example/jobapp/models/User.class
 com/example/jobapp/JobappApplication.class
 com/example/jobapp/models/GeneratedValue.class
+com/example/jobapp/models/Interviews.class
 com/example/jobapp/services/ApplicationService.class
 com/example/jobapp/controllers/TestController.class
 com/example/jobapp/models/Application.class
