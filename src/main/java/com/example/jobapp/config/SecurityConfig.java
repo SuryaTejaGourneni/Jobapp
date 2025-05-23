@@ -1,7 +1,5 @@
 package com.example.jobapp.config;
 
-import com.example.jobapp.models.User;
-import com.example.jobapp.repo.UserRepository;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -10,6 +8,9 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.web.SecurityFilterChain;
+
+import com.example.jobapp.models.User;
+import com.example.jobapp.repo.UserRepository;
 
 @Configuration
 public class SecurityConfig {
@@ -33,8 +34,10 @@ public class SecurityConfig {
     @Bean
     public UserDetailsService userDetailsService(UserRepository userRepository) {
         return username -> {
-            User user = userRepository.findByUsername(username)
-                .orElseThrow(() -> new UsernameNotFoundException("User not found: " + username));
+            User user = userRepository.findByUsername(username);
+            if (user == null) {
+                throw new UsernameNotFoundException("User not found: " + username);
+            }
             return org.springframework.security.core.userdetails.User
                 .withUsername(user.getUsername())
                 .password(user.getPassword())

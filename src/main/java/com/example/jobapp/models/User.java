@@ -42,4 +42,9 @@ public class User {
     public void setPassword(String password) { this.password = password; }
     public List<Application> getApplications() { return applications; }
     public void setApplications(List<Application> applications) { this.applications = applications; }
+
+    public User orElseThrow(Object object) {
+        
+        throw new UnsupportedOperationException("Unimplemented method 'orElseThrow'");
+    }
 }
